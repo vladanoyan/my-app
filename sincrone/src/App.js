@@ -9,13 +9,29 @@ import Fetch from './fetch';
 import {getData} from './reducer/action-data';
 
 class App extends Component {
+constructor(){
+  super();
+  this.state = {
+    show:false
+  }
+}
   render() {
-    const data_content = this.props.data_api.map((item, index)=> {
-      return <div key={index} id={item.id}>
-        <img src={require(`./${item.img}`)} />
-        <h1>{item.name}</h1>
-      </div>}
-    );
+let data_content ='';
+    const API_data=()=>{
+      // this.setState({show: !this.state.show});
+      this.props.API_data();
+
+      const data_content = this.props.data_api.map((item, index)=> {
+        return <div key={index} id={item.id}>
+          <img src={require(`./${item.img}`)} />
+          <h1>{item.name}</h1>
+        </div>}
+      );
+
+
+    }
+
+
 
     return (
       <div className="App">
@@ -24,9 +40,9 @@ class App extends Component {
           <Route path="/home" component={home} />
 
         <Fetch/>
-        {data_content}
+        { data_content }
 
-        <button onClick={this.props.API_DATA}>show API DATA</button>
+        <button onClick={ API_data }>show API DATA</button>
       </div>
     );
   }
@@ -37,10 +53,10 @@ class App extends Component {
 
 export default connect(
   state => ({
-    data_api:state.moki
+    data_api:state.data
   }),
   dispatch => ({
-  API_DATA: ()=>{
+  API_data: ()=>{
     dispatch(getData());
   }
   })

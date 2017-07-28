@@ -18,21 +18,21 @@ class Fetch extends Component {
     }
 
     fetch('http://www.mocky.io/v2/597772731100006b0bd899d9',
-      {
-        method:'post',
-        models:''
-      })
-      .then(status)
-      .then(json)
+{
+  method:'post',
+  models:''
+})
+.then(status)
+  .then(json)
 
-      .then((data)  => {
-      this.props.API(data);
-        console.log('data adding');
+  .then((data)  => {
+    this.props.API(data);
+    console.log('data adding');
 
-      }).catch(function (error) {
+  }).catch(function (error) {
 
-    })
-  }
+  })
+}
 
 
   render() {

@@ -5,8 +5,10 @@
 import {combineReducers} from 'redux';
 
 import moki from './moki';
+import data from './data';
 
 
 export default combineReducers ({
-  moki
+  moki,
+  data
 });

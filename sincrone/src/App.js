@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import {connect} from 'react-redux';
 import Fetch from './fetch';
-
+import {getData} from './reducer/action-data';
 
 class App extends Component {
   render() {
@@ -25,6 +25,8 @@ class App extends Component {
 
         <Fetch/>
         {data_content}
+
+        <button onClick={this.props.API_DATA}>show API DATA</button>
       </div>
     );
   }
@@ -37,8 +39,10 @@ export default connect(
   state => ({
     data_api:state.moki
   }),
-  dispach => ({
-
+  dispatch => ({
+  API_DATA: ()=>{
+    dispatch(getData());
+  }
   })
 
 )(App);
